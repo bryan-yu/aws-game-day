@@ -1,10 +1,10 @@
 import { sign } from "./signer";
 import { Event, Payload, Response } from "./types";
 
-const reverser = async ({ body }: Event): Promise<Response> => {
-  const payload: Payload = JSON.parse(body);
+const reverser = async (event: Payload): Promise<Response> => {
+  console.log(`Event ${JSON.stringify(event)}`);
 
-  const message = payload.Message.split("")
+  const message = event.Message.split("")
     .reverse()
     .join("");
 
@@ -12,6 +12,8 @@ const reverser = async ({ body }: Event): Promise<Response> => {
     Message: message,
     Signature: [sign(message)]
   };
+
+  console.log(`Response ${JSON.stringify(response)}`);
 
   return response;
 };

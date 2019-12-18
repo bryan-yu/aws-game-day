@@ -4,6 +4,9 @@ module.exports = {
   resolve: {
     extensions: [".js", ".ts", ".tsx"]
   },
+  output: {
+    libraryTarget: "commonjs"
+  },
   module: {
     rules: [
       {
