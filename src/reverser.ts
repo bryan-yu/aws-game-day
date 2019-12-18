@@ -1,5 +1,6 @@
 import { sign } from "./signer";
 import { Event, Payload, Response } from "./types";
+import { wrapError } from "./wrapError";
 
 const reverser = async (event: Event): Promise<Response> => {
   console.log(`Event ${JSON.stringify(event)}`);
@@ -20,4 +21,4 @@ const reverser = async (event: Event): Promise<Response> => {
   return response;
 };
 
-export default reverser;
+export default wrapError(reverser);
